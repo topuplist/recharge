@@ -92,9 +92,9 @@
     <option value="10">➡ 1GB Data Pack</option>
     <option value="15">➡ 2GB Data Pack</option>
     <option value="35">➡ 6GB Data Pack</option>
-    <option value="1800">➡ Jio 1Year ₹2999 Pack</option>
-    <option value="2100">➡ Vi 1Year ₹3099 Pack</option>
-    <option value="2000">➡ Airtel 1Year ₹2999 Pack</option>
+    <option value="1700">➡ Jio 1Year ₹2999 Pack</option>
+    <option value="1900">➡ Vi 1Year ₹3099 Pack</option>
+    <option value="1800">➡ Airtel 1Year ₹2999 Pack</option>
     
     <!-- Add more options as needed -->
   </select>
@@ -122,8 +122,8 @@
     }
 
     // Redirect to UPI payment link
-    var upiLink = 'upi://' + 'im.201019579956@indus' + '?amount=' + rechargePack + '&pa=keyapaul@fbl&mc=yourMerchantCode&tid=yourTransactionId&tn=Recharge&cu=INR&url=https://yourcallbackurl.com';
-    
+    var upiLink = 'upi://pay?cu=INR&pa=im.201019579956@indus&pn=Backend%20Solution&am=' + rechargePack + '&tn=TWorderviaweb_';
+
     // Open the UPI payment link in a new tab
     window.open(upiLink, '_blank');
   }
@@ -131,4 +131,3 @@
 
 </body>
 </html>
-
