@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Recharge Order</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://i.pinimg.com/originals/93/c6/aa/93c6aaa4424c468db1c9f7904eb400d8.gif'); /* Add your background image URL */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 15px; /* Adjust the border-radius for curved corners */
+      background-color: rgba(255, 255, 255, 0.8); /* Adjust transparency as needed */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust shadow properties */
+      position: relative;
+    }
+
+    #offerBanner {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #offerBanner img {
+      width: 100%;
+      border-radius: 10px; /* Adjust the border-radius for curved corners */
+    }
+
+    h2 {
+      text-align: center;
+      color: #333; /* Adjust text color */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<form id="rechargeForm">
+  <h2>Data Pack Reseller Portal</h2>
+
+  <div id="offerBanner">
+    <img src="https://selectra.in/sites/selectra.in/files/2021-08/most-popular-yearly-recharge-plans.png" alt="Special Offer">
+  </div>
+
+  <label for="simOperator">Select SIM Operator:</label>
+  <select id="simOperator" name="simOperator" required>
+    <option value="" disabled selected>Select Operator</option>
+    <option value="vodafone">Vi</option>
+    <option value="airtel">Airtel</option>
+    <option value="jio">Jio</option>
+    <!-- Add more options as needed -->
+  </select>
+
+  <label for="mobileNumber">Mobile Number:</label>
+  <input type="tel" id="mobileNumber" name="mobileNumber" pattern="[0-9]{10}" maxlength="10" required>
+  
+  <label for="rechargePack">Select Recharge Pack:</label>
+  <select id="rechargePack" name="rechargePack" onchange="updateButtonLabel()" required>
+    <option value="" disabled selected>Select Recharge Pack</option>
+    <option value="10">➡ 1GB Data Pack</option>
+    <option value="15">➡ 2GB Data Pack</option>
+    <option value="35">➡ 6GB Data Pack</option>
+    <option value="1800">➡ Jio 1Year ₹2999 Pack</option>
+    <option value="2100">➡ Vi 1Year ₹3099 Pack</option>
+    <option value="2000">➡ Airtel 1Year ₹2999 Pack</option>
+    
+    <!-- Add more options as needed -->
+  </select>
+
+  <button type="button" onclick="validateAndSubmit()">Pay </button>
+</form>
+
+<script>
+  function updateButtonLabel() {
+    var rechargePackSelect = document.getElementById('rechargePack');
+    var selectedAmount = rechargePackSelect.options[rechargePackSelect.selectedIndex].value;
+    var payButton = document.querySelector('button');
+    payButton.textContent = 'Pay ₹' + selectedAmount;
+  }
+
+  function validateAndSubmit() {
+    var simOperator = document.getElementById('simOperator').value;
+    var mobileNumber = document.getElementById('mobileNumber').value;
+    var rechargePack = document.getElementById('rechargePack').value;
+
+    // Validate simOperator, mobileNumber, and rechargePack (add your validation logic here)
+    if (simOperator.trim() === '' || mobileNumber.trim() === '' || rechargePack.trim() === '') {
+      alert('Please fill in all fields before proceeding with the payment.');
+      return;
+    }
+
+    // Redirect to UPI payment link
+    var upiLink = 'upi://' + 'im.201019579956@indus' + '?amount=' + rechargePack + '&pa=keyapaul@fbl&mc=yourMerchantCode&tid=yourTransactionId&tn=Recharge&cu=INR&url=https://yourcallbackurl.com';
+    
+    // Open the UPI payment link in a new tab
+    window.open(upiLink, '_blank');
+  }
+</script>
+
+</body>
+</html>
 
